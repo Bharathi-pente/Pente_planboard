@@ -66,9 +66,9 @@ export function StudentDashboard() {
       </div>
 
       {/* Main Content: 2 Column Layout */}
-      <div className="grid grid-cols-1 lg:grid-cols-[70%_30%] gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-[68%_30%] gap-6">
         {/* Left Column */}
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col gap-3">
           {/* Attendance Chart - NEW at top */}
           <div className="min-h-[550px]">
             <AttendanceChart 
@@ -84,7 +84,7 @@ export function StudentDashboard() {
         </div>
 
         {/* Right Column */}
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col gap-3">
           {/* Portfolio Progress Card */}
           <div className="min-h-[550px]">
             <PortfolioProgressCard data={portfolioProgress} />
