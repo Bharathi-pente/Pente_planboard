@@ -1,0 +1,19 @@
+export interface ApiResponse<T = any> {
+  success: boolean
+  data?: T
+  message?: string
+  error?: string
+}
+
+export interface PaginatedResponse<T> extends ApiResponse<T[]> {
+  total: number
+  page: number
+  pageSize: number
+  totalPages: number
+}
+
+export interface ApiError {
+  message: string
+  code?: string
+  status?: number
+}

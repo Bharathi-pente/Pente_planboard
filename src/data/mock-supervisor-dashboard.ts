@@ -1,0 +1,82 @@
+export const mockSupervisorDashboardData = {
+  stats: {
+    totalStudents: 312,
+    totalBatches: 4,
+    pendingReviews: 23,
+    criticalEscalations: 3,
+    graduationClearance: 8,
+    completionRate: 74,
+  },
+  recentReviews: [
+    {
+      id: 1,
+      student: {
+        name: 'Arjun Sharma',
+        initials: 'AS',
+        department: 'CS',
+        semester: '4th Year · Sem 8',
+      },
+      portfolioCompletion: 98,
+      verifiedItems: '42/43',
+      status: 'complete' as const,
+      statusLabel: 'Complete',
+    },
+    {
+      id: 2,
+      student: {
+        name: 'Kavya Raj',
+        initials: 'KR',
+        department: 'CS',
+        semester: '4th Year · Sem 8',
+      },
+      portfolioCompletion: 96,
+      verifiedItems: '41/43',
+      status: 'complete' as const,
+      statusLabel: 'Complete',
+    },
+    {
+      id: 3,
+      student: {
+        name: 'Rohit M.',
+        initials: 'RM',
+        department: 'Physics',
+        semester: '4th Year · Sem 8',
+      },
+      portfolioCompletion: 94,
+      verifiedItems: '40/43',
+      status: 'complete' as const,
+      statusLabel: 'Complete',
+    },
+    {
+      id: 4,
+      student: {
+        name: 'Meena K.',
+        initials: 'MK',
+        department: 'Maths',
+        semester: '4th Year · Sem 8',
+      },
+      portfolioCompletion: 89,
+      verifiedItems: '38/43',
+      status: 'review-needed' as const,
+      statusLabel: 'Review Needed',
+    },
+    {
+      id: 5,
+      student: {
+        name: 'Dev Joshi',
+        initials: 'DJ',
+        department: 'Physics',
+        semester: '4th Year · Sem 8',
+      },
+      portfolioCompletion: 71,
+      verifiedItems: '30/43',
+      status: 'incomplete' as const,
+      statusLabel: 'Incomplete',
+    },
+  ],
+  departments: [
+    { name: 'Computer Science', color: 'hsl(158,64%,52%)', percentage: 82 },
+    { name: 'Physics', color: 'hsl(238,74%,59%)', percentage: 79 },
+    { name: 'Mathematics', color: 'hsl(38,92%,50%)', percentage: 76 },
+  ],
+}
