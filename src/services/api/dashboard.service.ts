@@ -10,6 +10,7 @@ import {
   mockUpcomingDeadlines,
   mockPortfolioProgress,
   mockDigitalLockerSummary,
+  mockAttendanceData,
 } from '@/data'
 
 const USE_MOCK_DATA = import.meta.env.VITE_USE_MOCK_DATA !== 'false'
@@ -78,6 +79,19 @@ export const dashboardService = {
     }
     
     const response = await apiClient.get('/dashboard/digital-locker')
+    return response.data
+  },
+
+  /**
+   * Get attendance data
+   */
+  async getAttendanceData() {
+    if (USE_MOCK_DATA) {
+      await new Promise((resolve) => setTimeout(resolve, 300))
+      return mockAttendanceData
+    }
+    
+    const response = await apiClient.get('/dashboard/attendance')
     return response.data
   },
 }

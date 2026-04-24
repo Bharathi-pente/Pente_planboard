@@ -2,7 +2,36 @@ import { useState } from 'react'
 import { Card, Badge, Avatar, Button } from '@/components/ui'
 import { useMonitoring } from '../hooks/use-monitoring'
 import { KPICard, LoadingSpinner } from '@/components/shared'
-import { Users, TrendingUp, AlertTriangle, AlertCircle, Filter, Download } from 'lucide-react'
+import { Users, TrendingUp, AlertTriangle, AlertCircle, Filter, Download, FolderOpen } from 'lucide-react'
+import { BarChart, Bar, Cell, ResponsiveContainer } from 'recharts'
+
+// Mini Progress Chart Component
+const ProgressChart = ({ value }: { value: number }) => {
+  const data = [
+    { name: 'Progress', value: value },
+    { name: 'Remaining', value: 100 - value },
+  ]
+  
+  const getColor = (val: number) => {
+    if (val >= 80) return 'hsl(158,64%,52%)'
+    if (val >= 60) return 'hsl(38,92%,50%)'
+    return 'hsl(0,72%,51%)'
+  }
+  
+  return (
+    <div className="flex items-center gap-2">
+      <span className="text-sm font-semibold min-w-[35px]">{value}%</span>
+      <ResponsiveContainer width={80} height={20}>
+        <BarChart data={data} layout="horizontal" margin={{ top: 0, right: 0, bottom: 0, left: 0 }}>
+          <Bar dataKey="value" radius={[4, 4, 4, 4]}>
+            <Cell fill={getColor(value)} />
+            <Cell fill="hsl(214,32%,91%)" />
+          </Bar>
+        </BarChart>
+      </ResponsiveContainer>
+    </div>
+  )
+}
 
 export function Monitoring() {
   const [activeTab, setActiveTab] = useState(0)
@@ -111,7 +140,10 @@ export function Monitoring() {
                   Avg Grade
                 </th>
                 <th className="text-left px-6 py-3.5 text-xs font-semibold text-[hsl(220,9%,46%)] uppercase tracking-wider">
-                  Portfolio Progress
+                  <div className="flex items-center gap-2">
+                    <FolderOpen className="w-4 h-4" />
+                    Portfolio Progress
+                  </div>
                 </th>
                 <th className="text-left px-6 py-3.5 text-xs font-semibold text-[hsl(220,9%,46%)] uppercase tracking-wider">
                   Status
@@ -168,23 +200,7 @@ export function Monitoring() {
                     </span>
                   </td>
                   <td className="px-6 py-4">
-                    <div className="flex items-center gap-2">
-                      <span className="text-sm font-semibold">{student.portfolioProgress}%</span>
-                      <div className="w-16 h-2 bg-[hsl(214,32%,91%)] rounded-full overflow-hidden">
-                        <div
-                          className="h-full transition-all duration-300"
-                          style={{
-                            width: `${student.portfolioProgress}%`,
-                            background:
-                              student.portfolioProgress >= 80
-                                ? 'hsl(158,64%,52%)'
-                                : student.portfolioProgress >= 60
-                                ? 'hsl(38,92%,50%)'
-                                : 'hsl(0,72%,51%)',
-                          }}
-                        />
-                      </div>
-                    </div>
+                    <ProgressChart value={student.portfolioProgress} />
                   </td>
                   <td className="px-6 py-4">
                     <Badge

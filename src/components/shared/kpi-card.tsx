@@ -83,7 +83,7 @@ export function KPICard({
 
           {icon && (
             <div
-              className="w-14 h-14 rounded-xl flex items-center justify-center text-white shadow-sm flex-shrink-0 transition-transform duration-200 group-hover:scale-105"
+              className="w-12 h-12 rounded-xl flex items-center justify-center text-white shadow-sm flex-shrink-0 transition-transform duration-200 group-hover:scale-105"
               style={{ background: getGradient() }}
             >
               {icon}

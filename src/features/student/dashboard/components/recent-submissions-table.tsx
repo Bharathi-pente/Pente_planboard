@@ -1,5 +1,8 @@
 import { cn } from '@/lib/utils'
-import { FileText, GraduationCap, CheckSquare } from 'lucide-react'
+import { FileText, GraduationCap, CheckSquare, Cpu } from 'lucide-react'
+import { useNavigate } from 'react-router-dom'
+import { useState } from 'react'
+import { Pagination } from '@/components/shared'
 
 interface RecentSubmission {
   id: number
@@ -41,41 +44,58 @@ const typeConfig = {
     color: 'bg-[hsl(158,64%,52%)]/10 text-[hsl(158,64%,52%)]',
     icon: CheckSquare,
   },
+  'Mini Project': {
+    color: 'bg-[hsl(38,92%,50%)]/10 text-[hsl(38,92%,50%)]',
+    icon: Cpu,
+  },
 }
 
 export function RecentSubmissionsTable({ submissions }: RecentSubmissionsTableProps) {
+  const navigate = useNavigate()
+  const [currentPage, setCurrentPage] = useState(1)
+  const itemsPerPage = 5
+
+  // Calculate pagination
+  const totalPages = Math.ceil(submissions.length / itemsPerPage)
+  const startIndex = (currentPage - 1) * itemsPerPage
+  const endIndex = startIndex + itemsPerPage
+  const currentSubmissions = submissions.slice(startIndex, endIndex)
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page)
+  }
   return (
-    <div className="bg-white rounded-xl border border-[hsl(214,32%,91%)] overflow-hidden shadow-sm hover:shadow-md transition-all duration-200">
-      <div className="px-6 py-4 border-b border-[hsl(214,32%,91%)] flex items-center justify-between">
+    <div className="bg-white rounded-xl border border-[hsl(214,32%,91%)] overflow-hidden shadow-sm hover:shadow-md transition-all duration-200 h-full flex flex-col">
+      <div className="px-6 py-4 border-b border-[hsl(214,32%,91%)] flex items-center justify-between flex-shrink-0">
         <h3 className="text-base font-semibold text-[hsl(222,84%,5%)]">Recent Submissions</h3>
-        <a
-          href="#"
-          className="text-sm text-[hsl(238,74%,59%)] hover:text-[hsl(238,74%,54%)] font-semibold transition-colors duration-200"
+        <button
+          onClick={() => navigate('/student/activities')}
+          className="text-sm text-[hsl(238,74%,59%)] hover:text-[hsl(238,74%,54%)] font-semibold transition-colors duration-200 cursor-pointer"
         >
           View all →
-        </a>
+        </button>
       </div>
 
-      <div className="overflow-x-auto custom-scrollbar">
-        <table className="w-full">
+      <div className="overflow-x-auto custom-scrollbar flex-1">
+        <table className="w-full table-fixed">
           <thead>
             <tr className="bg-[hsl(240,20%,98%)] border-b border-[hsl(214,32%,91%)]">
-              <th className="text-left px-6 py-3.5 text-xs font-semibold text-[hsl(220,9%,46%)] uppercase tracking-wider">
+              <th className="text-left px-6 py-3.5 text-xs font-semibold text-[hsl(220,9%,46%)] uppercase tracking-wider w-1/4">
                 Activity
               </th>
-              <th className="text-left px-6 py-3.5 text-xs font-semibold text-[hsl(220,9%,46%)] uppercase tracking-wider">
+              <th className="text-left px-6 py-3.5 text-xs font-semibold text-[hsl(220,9%,46%)] uppercase tracking-wider w-1/4">
                 Type
               </th>
-              <th className="text-left px-6 py-3.5 text-xs font-semibold text-[hsl(220,9%,46%)] uppercase tracking-wider">
+              <th className="text-left px-6 py-3.5 text-xs font-semibold text-[hsl(220,9%,46%)] uppercase tracking-wider w-1/4">
                 Date
               </th>
-              <th className="text-left px-6 py-3.5 text-xs font-semibold text-[hsl(220,9%,46%)] uppercase tracking-wider">
+              <th className="text-left px-6 py-3.5 text-xs font-semibold text-[hsl(220,9%,46%)] uppercase tracking-wider w-1/4">
                 Status
               </th>
             </tr>
           </thead>
           <tbody>
-            {submissions.map((submission) => {
+            {currentSubmissions.map((submission) => {
               const config = statusConfig[submission.status as keyof typeof statusConfig]
               const typeConf = typeConfig[submission.type as keyof typeof typeConfig]
 
@@ -85,28 +105,28 @@ export function RecentSubmissionsTable({ submissions }: RecentSubmissionsTablePr
                   className={cn(
                     'border-b border-[hsl(214,32%,91%)] last:border-0 transition-all duration-150',
                     'hover:bg-[hsl(240,20%,98%)]',
-                    submission.status === 'approved' && 'opacity-70'
+                    // (submission.status === 'approved' || submission.status === 'pending' || submission.status === 'under review') && 'opacity-70'
                   )}
                 >
-                  <td className="px-6 py-4">
+                  <td className="px-6 py-4 w-1/4">
                     <div className="flex items-center gap-3">
                       <div className={cn('w-9 h-9 rounded-xl flex items-center justify-center transition-transform duration-200 hover:scale-110', typeConf?.color)}>
-                        {typeConf?.icon && <typeConf.icon className="w-4.5 h-4.5" />}
+                        {typeConf?.icon && <typeConf.icon className="w-4 h-4" />}
                       </div>
-                      <span className="text-sm font-medium text-[hsl(222,84%,5%)]">
+                      <span className="text-sm font-normal text-[hsl(222,84%,5%)]">
                         {submission.activity}
                       </span>
                     </div>
                   </td>
-                  <td className="px-6 py-4">
+                  <td className="px-6 py-4 w-1/4">
                     <span className={cn('text-xs font-semibold px-2.5 py-1 rounded-lg', typeConf?.color)}>
                       {submission.type}
                     </span>
                   </td>
-                  <td className="px-6 py-4">
-                    <span className="text-xs text-[hsl(220,9%,46%)] font-medium">{submission.date}</span>
+                  <td className="px-6 py-4 w-1/4">
+                    <span className="text-xs text-[hsl(220,9%,46%)] font-normal">{submission.date}</span>
                   </td>
-                  <td className="px-6 py-4">
+                  <td className="px-6 py-4 w-1/4">
                     <span className={cn('text-xs font-semibold px-3 py-1.5 rounded-lg border', config?.color)}>
                       {config?.label}
                     </span>
@@ -117,6 +137,15 @@ export function RecentSubmissionsTable({ submissions }: RecentSubmissionsTablePr
           </tbody>
         </table>
       </div>
+
+      {/* Pagination */}
+      {totalPages > 1 && (
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={handlePageChange}
+        />
+      )}
     </div>
   )
 }

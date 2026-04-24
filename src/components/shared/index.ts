@@ -12,3 +12,5 @@ export { LoadingSpinner, PageSkeleton, CardSkeleton } from './loading'
 export { ErrorDisplay, InlineError } from './error-display'
 
 export { RoleSwitcher } from './role-switcher'
+
+export { Pagination } from './pagination'

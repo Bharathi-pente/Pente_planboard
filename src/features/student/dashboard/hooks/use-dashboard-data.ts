@@ -27,17 +27,24 @@ export function useDashboardData() {
     queryFn: () => dashboardService.getDigitalLockerSummary(),
   })
 
+  const attendanceQuery = useQuery({
+    queryKey: ['dashboard', 'attendance'],
+    queryFn: () => dashboardService.getAttendanceData(),
+  })
+
   return {
     stats: statsQuery.data,
     recentSubmissions: recentSubmissionsQuery.data || [],
     upcomingDeadlines: upcomingDeadlinesQuery.data || [],
     portfolioProgress: portfolioProgressQuery.data,
     digitalLockerSummary: digitalLockerQuery.data,
+    attendanceData: attendanceQuery.data,
     isLoading:
       statsQuery.isLoading ||
       recentSubmissionsQuery.isLoading ||
       upcomingDeadlinesQuery.isLoading ||
       portfolioProgressQuery.isLoading ||
-      digitalLockerQuery.isLoading,
+      digitalLockerQuery.isLoading ||
+      attendanceQuery.isLoading,
   }
 }

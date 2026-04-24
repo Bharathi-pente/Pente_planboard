@@ -3,21 +3,21 @@ import { useDashboardData } from '../hooks/use-dashboard-data'
 import { DashboardHeader } from './dashboard-header'
 import { KPICard } from '@/components/shared'
 import { RecentSubmissionsTable } from './recent-submissions-table'
-import { DeadlineCard } from './deadline-card'
 import { PortfolioProgressCard } from './portfolio-progress-card'
 import { DigitalLockerCard } from './digital-locker-card'
+import { AttendanceChart } from './attendance-chart'
 
 export function StudentDashboard() {
   const {
     stats,
     recentSubmissions,
-    upcomingDeadlines,
     portfolioProgress,
     digitalLockerSummary,
+    attendanceData,
     isLoading,
   } = useDashboardData()
 
-  if (isLoading || !stats || !portfolioProgress || !digitalLockerSummary) {
+  if (isLoading || !stats || !portfolioProgress || !digitalLockerSummary || !attendanceData) {
     return (
       <div className="flex items-center justify-center py-20">
         <div className="text-center">
@@ -68,30 +68,32 @@ export function StudentDashboard() {
       {/* Main Content: 2 Column Layout */}
       <div className="grid grid-cols-1 lg:grid-cols-[70%_30%] gap-6">
         {/* Left Column */}
-        <div className="space-y-6">
-          {/* Recent Submissions Table */}
-          <RecentSubmissionsTable submissions={recentSubmissions} />
+        <div className="flex flex-col gap-6">
+          {/* Attendance Chart - NEW at top */}
+          <div className="min-h-[550px]">
+            <AttendanceChart 
+              monthlyData={attendanceData.monthly} 
+              yearlyData={attendanceData.yearly}
+            />
+          </div>
 
-          {/* Upcoming Deadlines */}
-          <div className="bg-white rounded-xl border border-[hsl(214,32%,91%)] p-6 shadow-sm">
-            <h3 className="text-base font-semibold text-[hsl(222,84%,5%)] mb-4">
-              Upcoming Deadlines
-            </h3>
-            <div className="space-y-3">
-              {upcomingDeadlines.map((deadline: any) => (
-                <DeadlineCard key={deadline.id} deadline={deadline} />
-              ))}
-            </div>
+          {/* Recent Submissions - MOVED to bottom */}
+          <div className="flex-1">
+            <RecentSubmissionsTable submissions={recentSubmissions} />
           </div>
         </div>
 
         {/* Right Column */}
-        <div className="space-y-6">
+        <div className="flex flex-col gap-6">
           {/* Portfolio Progress Card */}
-          <PortfolioProgressCard data={portfolioProgress} />
+          <div className="min-h-[550px]">
+            <PortfolioProgressCard data={portfolioProgress} />
+          </div>
 
           {/* Digital Locker Summary */}
-          <DigitalLockerCard data={digitalLockerSummary} />
+          <div className="flex-1">
+            <DigitalLockerCard data={digitalLockerSummary} />
+          </div>
         </div>
       </div>
     </div>
