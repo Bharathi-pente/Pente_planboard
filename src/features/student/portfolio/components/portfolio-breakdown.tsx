@@ -60,11 +60,11 @@ export function PortfolioBreakdown({ years }: PortfolioBreakdownProps) {
   return (
     <div className="space-y-4">
       {years.map((yearData) => (
-        <div key={yearData.year} className="bg-white rounded-xl border border-[hsl(214,32%,91%)] overflow-hidden">
+        <div key={yearData.year} className="bg-white rounded-xl border border-[hsl(214,32%,91%)] shadow-sm hover:shadow-md transition-all duration-200 overflow-hidden">
           {/* Year Header */}
           <button
             onClick={() => toggleYear(yearData.year)}
-            className="w-full flex items-center justify-between p-4 hover:bg-[hsl(240,20%,96%)] transition-colors"
+            className="w-full flex items-center justify-between p-5 hover:bg-[hsl(240,20%,98%)] transition-all duration-150"
           >
             <div className="flex items-center gap-4">
               <div className="text-left">
@@ -96,7 +96,7 @@ export function PortfolioBreakdown({ years }: PortfolioBreakdownProps) {
                   {/* Semester Header */}
                   <button
                     onClick={() => toggleSemester(yearData.year, semesterData.semester)}
-                    className="w-full flex items-center justify-between p-4 pl-8 hover:bg-[hsl(240,20%,96%)] transition-colors"
+                    className="w-full flex items-center justify-between p-4 pl-8 hover:bg-[hsl(240,20%,98%)] transition-all duration-150"
                   >
                     <div>
                       <h4 className="text-base font-medium text-[hsl(222,84%,5%)]">
@@ -121,23 +121,23 @@ export function PortfolioBreakdown({ years }: PortfolioBreakdownProps) {
                   {/* Subjects Table */}
                   {expandedSemester?.year === yearData.year && expandedSemester?.semester === semesterData.semester && (
                     <div className="bg-[hsl(240,20%,98%)] p-4 pl-8">
-                      <div className="bg-white rounded-lg border border-[hsl(214,32%,91%)] overflow-hidden">
-                        <table className="w-full">
+                      <div className="bg-white rounded-lg border border-[hsl(214,32%,91%)] shadow-sm overflow-hidden">
+                        <table className="w-full table-fixed">
                           <thead>
-                            <tr className="bg-[hsl(240,20%,96%)] border-b border-[hsl(214,32%,91%)]">
-                              <th className="text-left px-4 py-3 text-xs font-medium text-[hsl(220,9%,46%)] uppercase tracking-wider">
+                            <tr className="bg-[hsl(240,20%,98%)] border-b border-[hsl(214,32%,91%)]">
+                              <th className="text-left px-6 py-3.5 text-xs font-semibold text-[hsl(220,9%,46%)] uppercase tracking-wider w-[15%]">
                                 Code
                               </th>
-                              <th className="text-left px-4 py-3 text-xs font-medium text-[hsl(220,9%,46%)] uppercase tracking-wider">
+                              <th className="text-left px-6 py-3.5 text-xs font-semibold text-[hsl(220,9%,46%)] uppercase tracking-wider w-[40%]">
                                 Subject
                               </th>
-                              <th className="text-left px-4 py-3 text-xs font-medium text-[hsl(220,9%,46%)] uppercase tracking-wider">
+                              <th className="text-left px-6 py-3.5 text-xs font-semibold text-[hsl(220,9%,46%)] uppercase tracking-wider w-[15%]">
                                 Type
                               </th>
-                              <th className="text-center px-4 py-3 text-xs font-medium text-[hsl(220,9%,46%)] uppercase tracking-wider">
+                              <th className="text-center px-6 py-3.5 text-xs font-semibold text-[hsl(220,9%,46%)] uppercase tracking-wider w-[15%]">
                                 Credits
                               </th>
-                              <th className="text-center px-4 py-3 text-xs font-medium text-[hsl(220,9%,46%)] uppercase tracking-wider">
+                              <th className="text-center px-6 py-3.5 text-xs font-semibold text-[hsl(220,9%,46%)] uppercase tracking-wider w-[15%]">
                                 Grade
                               </th>
                             </tr>
@@ -146,23 +146,23 @@ export function PortfolioBreakdown({ years }: PortfolioBreakdownProps) {
                             {semesterData.subjects.map((subject, index) => (
                               <tr
                                 key={index}
-                                className="border-b border-[hsl(214,32%,91%)] last:border-0 hover:bg-[hsl(240,20%,96%)] transition-colors"
+                                className="border-b border-[hsl(214,32%,91%)] last:border-0 hover:bg-[hsl(240,20%,98%)] transition-all duration-150"
                               >
-                                <td className="px-4 py-3 text-sm font-medium text-[hsl(220,9%,46%)]">
+                                <td className="px-6 py-4 text-sm font-medium text-[hsl(220,9%,46%)]">
                                   {subject.code}
                                 </td>
-                                <td className="px-4 py-3 text-sm text-[hsl(222,84%,5%)]">
+                                <td className="px-6 py-4 text-sm text-[hsl(222,84%,5%)] font-medium">
                                   {subject.name}
                                 </td>
-                                <td className="px-4 py-3">
+                                <td className="px-6 py-4">
                                   <Badge variant="student" size="sm">
                                     {subject.type}
                                   </Badge>
                                 </td>
-                                <td className="px-4 py-3 text-sm text-center text-[hsl(222,84%,5%)]">
+                                <td className="px-6 py-4 text-sm text-center text-[hsl(222,84%,5%)] font-medium">
                                   {subject.credits}
                                 </td>
-                                <td className="px-4 py-3 text-center">
+                                <td className="px-6 py-4 text-center">
                                   <span
                                     className="inline-block px-3 py-1 rounded-lg text-sm font-bold"
                                     style={{

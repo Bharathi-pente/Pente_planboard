@@ -1,8 +1,8 @@
 import * as React from 'react'
 import { PageHeader } from '@/components/layout'
 import { Button, Card, CardContent } from '@/components/ui'
-import { GanttTimeline, type TimelineActivity, KPICard } from '@/components/shared'
-import { Download, Calendar as CalendarIcon, CheckSquare, Clock, TrendingUp, Calendar, ChevronDown, ChevronRight } from 'lucide-react'
+import { GanttTimeline, type TimelineActivity } from '@/components/shared'
+import { Download, Calendar as CalendarIcon, ChevronDown, ChevronRight, Plus } from 'lucide-react'
 import { usePlanboard } from '../hooks/use-planboard'
 import { Filters, type PlanboardFilters } from './filters'
 import { TaskDrawer } from './task-drawer'
@@ -86,8 +86,8 @@ export function Planboard() {
           ]}
           actions={
             <>
-              <div className="flex items-center gap-3 mr-4">
-                <input
+              {/* <div className="flex items-center gap-3 mr-4"> */}
+                {/* <input
                   type="checkbox"
                   id="calendar-view"
                   checked={calendarView}
@@ -100,50 +100,54 @@ export function Planboard() {
                 >
                   Calendar View
                 </label>
-              </div>
+              </div> */}
               <Filters filters={filters} onFilterChange={setFilters} />
-              <Button variant="bgo" size="md">
-                <CalendarIcon className="w-4 h-4" />
-                View Calendar
-              </Button>
-              <Button variant="bacc" size="md">
-                <Download className="w-4 h-4" />
-                Export
-              </Button>
+              {/* <Button variant="bacc" size="md">
+                <Plus className="w-4 h-4" />
+                New Activity
+              </Button> */}
             </>
           }
         />
 
-        {/* KPI Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
-          <KPICard
-            title="Total Activities"
-            value={activities.length}
-            subtitle="All planned tasks"
-            icon={<CheckSquare className="w-6 h-6" />}
-            variant="student"
-          />
-          <KPICard
-            title="Completed"
-            value={activities.filter((a) => a.status === 'completed').length}
-            subtitle="Successfully finished"
-            icon={<TrendingUp className="w-6 h-6" />}
-            variant="faculty"
-          />
-          <KPICard
-            title="In Progress"
-            value={activities.filter((a) => a.status === 'in-progress').length}
-            subtitle="Currently working on"
-            icon={<Clock className="w-6 h-6" />}
-            variant="supervisor"
-          />
-          <KPICard
-            title="Upcoming"
-            value={activities.filter((a) => a.status === 'upcoming' || a.status === 'planned').length}
-            subtitle="Scheduled ahead"
-            icon={<Calendar className="w-6 h-6" />}
-            variant="student"
-          />
+        {/* Roadmap Stats Overview */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+          <div className="bg-white rounded-xl border border-[hsl(214,32%,91%)] shadow-sm hover:shadow-md transition-all duration-200 p-4 border-l-4 border-l-[hsl(38,92%,50%)]">
+            <div className="text-[11px] text-[hsl(220,9%,46%)] font-semibold mb-1 uppercase tracking-wider">PENDING ACTIVITIES</div>
+            <div className="flex justify-between items-center">
+              <div className="text-2xl font-bold text-[hsl(38,92%,50%)]">
+                {activities.filter((a) => a.status === 'planned' || a.status === 'upcoming').length}
+              </div>
+              <span className="text-[10px] text-[hsl(220,9%,46%)]">Due this month</span>
+            </div>
+          </div>
+          <div className="bg-white rounded-xl border border-[hsl(214,32%,91%)] shadow-sm hover:shadow-md transition-all duration-200 p-4 border-l-4 border-l-[hsl(238,74%,59%)]">
+            <div className="text-[11px] text-[hsl(220,9%,46%)] font-semibold mb-1 uppercase tracking-wider">IN PROGRESS</div>
+            <div className="flex justify-between items-center">
+              <div className="text-2xl font-bold text-[hsl(238,74%,59%)]">
+                {activities.filter((a) => a.status === 'in-progress').length}
+              </div>
+              <span className="text-[10px] text-[hsl(220,9%,46%)]">Active now</span>
+            </div>
+          </div>
+          <div className="bg-white rounded-xl border border-[hsl(214,32%,91%)] shadow-sm hover:shadow-md transition-all duration-200 p-4 border-l-4 border-l-[hsl(158,64%,52%)]">
+            <div className="text-[11px] text-[hsl(220,9%,46%)] font-semibold mb-1 uppercase tracking-wider">COMPLETED</div>
+            <div className="flex justify-between items-center">
+              <div className="text-2xl font-bold text-[hsl(158,64%,52%)]">
+                {activities.filter((a) => a.status === 'completed').length}
+              </div>
+              <span className="text-[10px] text-[hsl(220,9%,46%)]">This semester</span>
+            </div>
+          </div>
+          <div className="bg-white rounded-xl border border-[hsl(214,32%,91%)] shadow-sm hover:shadow-md transition-all duration-200 p-4 border-l-4 border-l-[hsl(271,81%,56%)]">
+            <div className="text-[11px] text-[hsl(220,9%,46%)] font-semibold mb-1 uppercase tracking-wider">ON SCHEDULE</div>
+            <div className="flex justify-between items-center">
+              <div className="text-2xl font-bold text-[hsl(271,81%,56%)]">
+                {Math.round((activities.filter((a) => a.status === 'completed').length / activities.length) * 100) || 0}%
+              </div>
+              <span className="text-[10px] text-[hsl(220,9%,46%)]">Timeline status</span>
+            </div>
+          </div>
         </div>
 
         {/* Active Filters Display */}
@@ -251,9 +255,9 @@ export function Planboard() {
           </div>
         ) : (
           /* Timeline View */
-          <Card>
-            <CardContent className="p-6">
-              {filteredActivities.length === 0 ? (
+          filteredActivities.length === 0 ? (
+            <Card>
+              <CardContent className="p-6">
                 <div className="text-center py-20">
                   <CalendarIcon className="w-16 h-16 mx-auto mb-4 text-[hsl(220,9%,66%)]" />
                   <h3 className="text-lg font-medium text-[hsl(222,84%,5%)] mb-2">
@@ -263,15 +267,15 @@ export function Planboard() {
                     Try adjusting your filters or add new activities
                   </p>
                 </div>
-              ) : (
-                <GanttTimeline
-                  activities={filteredActivities}
-                  weeks={8}
-                  onActivityClick={handleActivityClick}
-                />
-              )}
-            </CardContent>
-          </Card>
+              </CardContent>
+            </Card>
+          ) : (
+            <GanttTimeline
+              activities={filteredActivities}
+              weeks={8}
+              onActivityClick={handleActivityClick}
+            />
+          )
         )}
       </div>
 

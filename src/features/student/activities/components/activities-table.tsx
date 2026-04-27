@@ -123,7 +123,6 @@ export function ActivitiesTable({
             render: (item) => (
               <span className="text-sm">{formatDate(item.submittedDate || '')}</span>
             ),
-            width: '150px',
           },
           {
             key: 'status',
@@ -131,10 +130,9 @@ export function ActivitiesTable({
             sortable: true,
             render: (item) => (
               <Badge variant={getStatusBadgeVariant(item.status as any)} size="md">
-                {item.status}
+                {item.status.charAt(0).toUpperCase() + item.status.slice(1)}
               </Badge>
             ),
-            width: '120px',
           },
           {
             key: 'grade',
@@ -144,7 +142,6 @@ export function ActivitiesTable({
                 {item.grade || '—'}
               </span>
             ),
-            width: '80px',
           },
           {
             key: 'faculty',
@@ -152,13 +149,11 @@ export function ActivitiesTable({
             render: (item) => (
               <span className="text-sm text-[hsl(220,9%,46%)]">{item.faculty}</span>
             ),
-            width: '180px',
           },
           {
             key: 'actions',
-            header: '',
+            header: 'Actions',
             render: (item) => <ActionMenu activity={item} />,
-            width: '60px',
           },
         ]
 
@@ -182,7 +177,6 @@ export function ActivitiesTable({
             render: (item) => (
               <span className="text-sm">{formatDate(item.date || '')}</span>
             ),
-            width: '150px',
           },
           {
             key: 'status',
@@ -190,10 +184,9 @@ export function ActivitiesTable({
             sortable: true,
             render: (item) => (
               <Badge variant={getStatusBadgeVariant(item.status as any)} size="md">
-                {item.status}
+                {item.status.charAt(0).toUpperCase() + item.status.slice(1)}
               </Badge>
             ),
-            width: '120px',
           },
           {
             key: 'certificate',
@@ -203,13 +196,11 @@ export function ActivitiesTable({
                 {item.certificate ? '✓ Yes' : item.hours ? `${item.hours}h` : item.rank || '—'}
               </span>
             ),
-            width: '120px',
           },
           {
             key: 'actions',
-            header: '',
+            header: 'Actions',
             render: (item) => <ActionMenu activity={item} />,
-            width: '60px',
           },
         ]
 
@@ -233,7 +224,6 @@ export function ActivitiesTable({
             render: (item) => (
               <span className="text-sm">{formatDate(item.submittedDate || '')}</span>
             ),
-            width: '150px',
           },
           {
             key: 'dueDate',
@@ -242,7 +232,6 @@ export function ActivitiesTable({
             render: (item) => (
               <span className="text-sm">{formatDate(item.dueDate || '')}</span>
             ),
-            width: '150px',
           },
           {
             key: 'status',
@@ -250,10 +239,9 @@ export function ActivitiesTable({
             sortable: true,
             render: (item) => (
               <Badge variant={getStatusBadgeVariant(item.status as any)} size="md">
-                {item.status}
+                {item.status.charAt(0).toUpperCase() + item.status.slice(1)}
               </Badge>
             ),
-            width: '120px',
           },
           {
             key: 'grade',
@@ -263,13 +251,11 @@ export function ActivitiesTable({
                 {item.grade || '—'}
               </span>
             ),
-            width: '80px',
           },
           {
             key: 'actions',
-            header: '',
+            header: 'Actions',
             render: (item) => <ActionMenu activity={item} />,
-            width: '60px',
           },
         ]
 
@@ -295,7 +281,6 @@ export function ActivitiesTable({
             render: (item) => (
               <span className="text-sm">{formatDate(item.submittedDate || '')}</span>
             ),
-            width: '150px',
           },
           {
             key: 'status',
@@ -303,10 +288,9 @@ export function ActivitiesTable({
             sortable: true,
             render: (item) => (
               <Badge variant={getStatusBadgeVariant(item.status as any)} size="md">
-                {item.status}
+                {item.status.charAt(0).toUpperCase() + item.status.slice(1)}
               </Badge>
             ),
-            width: '120px',
           },
           {
             key: 'grade',
@@ -316,13 +300,11 @@ export function ActivitiesTable({
                 {item.grade || '—'}
               </span>
             ),
-            width: '80px',
           },
           {
             key: 'actions',
-            header: '',
+            header: 'Actions',
             render: (item) => <ActionMenu activity={item} />,
-            width: '60px',
           },
         ]
 

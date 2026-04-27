@@ -32,7 +32,7 @@ export function Portfolio() {
 
   return (
     <>
-      <div>
+      <div className="space-y-6">
         <PageHeader
           title="Portfolio"
           description="Your complete academic journey and achievements"
@@ -49,7 +49,7 @@ export function Portfolio() {
         />
 
         {/* KPI Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           <KPICard
             title="Overall GPA"
             value={overallGPA as any}
@@ -84,20 +84,21 @@ export function Portfolio() {
         </div>
 
         {/* Student Info Banner */}
-        <div className="bg-gradient-to-br from-[hsl(238,74%,59%)] to-[hsl(271,81%,56%)] rounded-xl p-6 mb-6 text-white">
-          <div className="flex items-center justify-between">
+        <div className="bg-gradient-to-br from-[hsl(238,74%,59%)] to-[hsl(271,81%,56%)] rounded-2xl p-8 text-white shadow-lg hover:shadow-xl transition-all duration-300 group relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-[hsl(0,72%,51%)] to-[hsl(330,81%,60%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+          <div className="relative flex items-center justify-between">
             <div>
-              <h2 className="text-2xl font-semibold mb-2">
+              <h2 className="text-2xl font-bold mb-2">
                 {portfolio.student.name}
               </h2>
-              <p className="text-white/90 mb-1">{portfolio.student.rollNumber}</p>
-              <p className="text-white/80">
+              <p className="text-white/90 mb-1 font-medium">{portfolio.student.rollNumber}</p>
+              <p className="text-white/80 text-sm">
                 {portfolio.student.department} • Year {portfolio.student.year}
               </p>
             </div>
             <div className="text-right">
-              <p className="text-white/80 text-sm mb-1">Overall GPA</p>
-              <p className="text-5xl font-bold">{overallGPA}</p>
+              <p className="text-white/80 text-sm mb-1 font-medium">Overall GPA</p>
+              <p className="text-5xl font-bold tracking-tight">{overallGPA}</p>
             </div>
           </div>
         </div>

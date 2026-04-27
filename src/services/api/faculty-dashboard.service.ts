@@ -7,6 +7,7 @@ import {
   mockFacultyStats,
   mockFacultyRecentActivities,
   mockClassPerformance,
+  mockClassPerformanceChartData,
   mockFacultyUpcomingDeadlines,
   mockWeeklySchedule,
 } from '@/data/mock-faculty-dashboard'
@@ -50,6 +51,19 @@ export const facultyDashboardService = {
     }
     
     const response = await apiClient.get('/faculty/dashboard/class-performance')
+    return response.data
+  },
+
+  /**
+   * Get class performance chart data
+   */
+  async getClassPerformanceChartData() {
+    if (USE_MOCK_DATA) {
+      await new Promise((resolve) => setTimeout(resolve, 300))
+      return mockClassPerformanceChartData
+    }
+    
+    const response = await apiClient.get('/faculty/dashboard/class-performance-chart-data')
     return response.data
   },
 

@@ -1,4 +1,4 @@
-import { Archive, FileText, LayoutDashboard } from 'lucide-react'
+import { Archive, FileText, LayoutDashboard, TrendingUp } from 'lucide-react'
 import { KPICard } from '@/components/shared'
 
 interface LockerStatsProps {
@@ -12,7 +12,7 @@ interface LockerStatsProps {
 
 export function LockerStats({ stats }: LockerStatsProps) {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
       <KPICard
         title="Verified Documents"
         value={stats.verified}
@@ -40,6 +40,19 @@ export function LockerStats({ stats }: LockerStatsProps) {
         subtitle="In your locker"
         icon={<LayoutDashboard className="w-6 h-6" />}
         variant="student"
+      />
+
+      <KPICard
+        title="Verification Progress"
+        value={`${stats.progressPercentage}%`}
+        subtitle={`${stats.verified} of ${stats.total} verified`}
+        icon={<TrendingUp className="w-6 h-6" />}
+        variant="faculty"
+        trend={{
+          value: 12,
+          label: 'completion rate',
+          isPositive: true,
+        }}
       />
     </div>
   )

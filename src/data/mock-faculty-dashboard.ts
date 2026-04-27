@@ -206,3 +206,299 @@ export const mockWeeklySchedule = {
     },
   ],
 }
+
+// Class Performance Chart Data
+export const mockClassPerformanceChartData = {
+  monthly: {
+    January: [
+      // CSE 4A - Machine Learning
+      [
+        { label: 'Week 1', value: 65 },
+        { label: 'Week 2', value: 68 },
+        { label: 'Week 3', value: 70 },
+        { label: 'Week 4', value: 72 },
+      ],
+      // CSE 4B - Database Systems
+      [
+        { label: 'Week 1', value: 60 },
+        { label: 'Week 2', value: 62 },
+        { label: 'Week 3', value: 65 },
+        { label: 'Week 4', value: 68 },
+      ],
+      // CSE 3A - Data Structures
+      [
+        { label: 'Week 1', value: 78 },
+        { label: 'Week 2', value: 80 },
+        { label: 'Week 3', value: 82 },
+        { label: 'Week 4', value: 85 },
+      ],
+    ],
+    February: [
+      [
+        { label: 'Week 1', value: 70 },
+        { label: 'Week 2', value: 72 },
+        { label: 'Week 3', value: 74 },
+        { label: 'Week 4', value: 76 },
+      ],
+      [
+        { label: 'Week 1', value: 66 },
+        { label: 'Week 2', value: 68 },
+        { label: 'Week 3', value: 70 },
+        { label: 'Week 4', value: 72 },
+      ],
+      [
+        { label: 'Week 1', value: 82 },
+        { label: 'Week 2', value: 84 },
+        { label: 'Week 3', value: 86 },
+        { label: 'Week 4', value: 88 },
+      ],
+    ],
+    March: [
+      [
+        { label: 'Week 1', value: 74 },
+        { label: 'Week 2', value: 76 },
+        { label: 'Week 3', value: 78 },
+        { label: 'Week 4', value: 80 },
+      ],
+      [
+        { label: 'Week 1', value: 70 },
+        { label: 'Week 2', value: 72 },
+        { label: 'Week 3', value: 74 },
+        { label: 'Week 4', value: 76 },
+      ],
+      [
+        { label: 'Week 1', value: 85 },
+        { label: 'Week 2', value: 87 },
+        { label: 'Week 3', value: 89 },
+        { label: 'Week 4', value: 90 },
+      ],
+    ],
+    April: [
+      [
+        { label: 'Week 1', value: 68 },
+        { label: 'Week 2', value: 70 },
+        { label: 'Week 3', value: 72 },
+        { label: 'Week 4', value: 75 },
+      ],
+      [
+        { label: 'Week 1', value: 64 },
+        { label: 'Week 2', value: 66 },
+        { label: 'Week 3', value: 68 },
+        { label: 'Week 4', value: 70 },
+      ],
+      [
+        { label: 'Week 1', value: 83 },
+        { label: 'Week 2', value: 85 },
+        { label: 'Week 3', value: 86 },
+        { label: 'Week 4', value: 88 },
+      ],
+    ],
+    May: [
+      [
+        { label: 'Week 1', value: 75 },
+        { label: 'Week 2', value: 77 },
+        { label: 'Week 3', value: 79 },
+        { label: 'Week 4', value: 81 },
+      ],
+      [
+        { label: 'Week 1', value: 70 },
+        { label: 'Week 2', value: 72 },
+        { label: 'Week 3', value: 75 },
+        { label: 'Week 4', value: 78 },
+      ],
+      [
+        { label: 'Week 1', value: 88 },
+        { label: 'Week 2', value: 90 },
+        { label: 'Week 3', value: 91 },
+        { label: 'Week 4', value: 92 },
+      ],
+    ],
+    June: [
+      [
+        { label: 'Week 1', value: 78 },
+        { label: 'Week 2', value: 80 },
+        { label: 'Week 3', value: 82 },
+        { label: 'Week 4', value: 84 },
+      ],
+      [
+        { label: 'Week 1', value: 75 },
+        { label: 'Week 2', value: 77 },
+        { label: 'Week 3', value: 79 },
+        { label: 'Week 4', value: 81 },
+      ],
+      [
+        { label: 'Week 1', value: 90 },
+        { label: 'Week 2', value: 91 },
+        { label: 'Week 3', value: 92 },
+        { label: 'Week 4', value: 93 },
+      ],
+    ],
+    July: [
+      [
+        { label: 'Week 1', value: 80 },
+        { label: 'Week 2', value: 82 },
+        { label: 'Week 3', value: 84 },
+        { label: 'Week 4', value: 85 },
+      ],
+      [
+        { label: 'Week 1', value: 78 },
+        { label: 'Week 2', value: 80 },
+        { label: 'Week 3', value: 82 },
+        { label: 'Week 4', value: 83 },
+      ],
+      [
+        { label: 'Week 1', value: 91 },
+        { label: 'Week 2', value: 92 },
+        { label: 'Week 3', value: 93 },
+        { label: 'Week 4', value: 94 },
+      ],
+    ],
+    August: [
+      [
+        { label: 'Week 1', value: 82 },
+        { label: 'Week 2', value: 84 },
+        { label: 'Week 3', value: 85 },
+        { label: 'Week 4', value: 86 },
+      ],
+      [
+        { label: 'Week 1', value: 80 },
+        { label: 'Week 2', value: 82 },
+        { label: 'Week 3', value: 83 },
+        { label: 'Week 4', value: 84 },
+      ],
+      [
+        { label: 'Week 1', value: 92 },
+        { label: 'Week 2', value: 93 },
+        { label: 'Week 3', value: 94 },
+        { label: 'Week 4', value: 95 },
+      ],
+    ],
+    September: [
+      [
+        { label: 'Week 1', value: 70 },
+        { label: 'Week 2', value: 72 },
+        { label: 'Week 3', value: 74 },
+        { label: 'Week 4', value: 76 },
+      ],
+      [
+        { label: 'Week 1', value: 68 },
+        { label: 'Week 2', value: 70 },
+        { label: 'Week 3', value: 72 },
+        { label: 'Week 4', value: 74 },
+      ],
+      [
+        { label: 'Week 1', value: 85 },
+        { label: 'Week 2', value: 87 },
+        { label: 'Week 3', value: 88 },
+        { label: 'Week 4', value: 90 },
+      ],
+    ],
+    October: [
+      [
+        { label: 'Week 1', value: 73 },
+        { label: 'Week 2', value: 75 },
+        { label: 'Week 3', value: 77 },
+        { label: 'Week 4', value: 79 },
+      ],
+      [
+        { label: 'Week 1', value: 71 },
+        { label: 'Week 2', value: 73 },
+        { label: 'Week 3', value: 75 },
+        { label: 'Week 4', value: 77 },
+      ],
+      [
+        { label: 'Week 1', value: 87 },
+        { label: 'Week 2', value: 89 },
+        { label: 'Week 3', value: 90 },
+        { label: 'Week 4', value: 91 },
+      ],
+    ],
+    November: [
+      [
+        { label: 'Week 1', value: 76 },
+        { label: 'Week 2', value: 78 },
+        { label: 'Week 3', value: 80 },
+        { label: 'Week 4', value: 82 },
+      ],
+      [
+        { label: 'Week 1', value: 74 },
+        { label: 'Week 2', value: 76 },
+        { label: 'Week 3', value: 78 },
+        { label: 'Week 4', value: 80 },
+      ],
+      [
+        { label: 'Week 1', value: 89 },
+        { label: 'Week 2', value: 90 },
+        { label: 'Week 3', value: 91 },
+        { label: 'Week 4', value: 92 },
+      ],
+    ],
+    December: [
+      [
+        { label: 'Week 1', value: 80 },
+        { label: 'Week 2', value: 82 },
+        { label: 'Week 3', value: 84 },
+        { label: 'Week 4', value: 86 },
+      ],
+      [
+        { label: 'Week 1', value: 78 },
+        { label: 'Week 2', value: 80 },
+        { label: 'Week 3', value: 82 },
+        { label: 'Week 4', value: 84 },
+      ],
+      [
+        { label: 'Week 1', value: 90 },
+        { label: 'Week 2', value: 91 },
+        { label: 'Week 3', value: 92 },
+        { label: 'Week 4', value: 93 },
+      ],
+    ],
+  },
+  yearly: [
+    // CSE 4A - Machine Learning
+    [
+      { label: 'Jan', value: 72 },
+      { label: 'Feb', value: 76 },
+      { label: 'Mar', value: 80 },
+      { label: 'Apr', value: 75 },
+      { label: 'May', value: 81 },
+      { label: 'Jun', value: 84 },
+      { label: 'Jul', value: 85 },
+      { label: 'Aug', value: 86 },
+      { label: 'Sep', value: 76 },
+      { label: 'Oct', value: 79 },
+      { label: 'Nov', value: 82 },
+      { label: 'Dec', value: 86 },
+    ],
+    // CSE 4B - Database Systems
+    [
+      { label: 'Jan', value: 68 },
+      { label: 'Feb', value: 72 },
+      { label: 'Mar', value: 76 },
+      { label: 'Apr', value: 70 },
+      { label: 'May', value: 78 },
+      { label: 'Jun', value: 81 },
+      { label: 'Jul', value: 83 },
+      { label: 'Aug', value: 84 },
+      { label: 'Sep', value: 74 },
+      { label: 'Oct', value: 77 },
+      { label: 'Nov', value: 80 },
+      { label: 'Dec', value: 84 },
+    ],
+    // CSE 3A - Data Structures
+    [
+      { label: 'Jan', value: 85 },
+      { label: 'Feb', value: 88 },
+      { label: 'Mar', value: 90 },
+      { label: 'Apr', value: 88 },
+      { label: 'May', value: 92 },
+      { label: 'Jun', value: 93 },
+      { label: 'Jul', value: 94 },
+      { label: 'Aug', value: 95 },
+      { label: 'Sep', value: 90 },
+      { label: 'Oct', value: 91 },
+      { label: 'Nov', value: 92 },
+      { label: 'Dec', value: 93 },
+    ],
+  ],
+}

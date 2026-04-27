@@ -75,15 +75,15 @@ export function DataTable<T extends Record<string, any>>({
 
   return (
     <div className={cn('w-full overflow-x-auto custom-scrollbar', className)}>
-      <table className="w-full border-collapse">
+      <table className="w-full border-collapse table-fixed">
         <thead>
-          <tr className="border-b border-[hsl(214,32%,91%)]">
+          <tr className="bg-[hsl(240,20%,98%)] border-b border-[hsl(214,32%,91%)]">
             {columns.map((column) => (
               <th
                 key={column.key}
                 className={cn(
-                  'text-left py-3 px-4 text-xs font-medium text-[hsl(220,9%,46%)] uppercase tracking-wider',
-                  column.sortable && 'cursor-pointer hover:text-[hsl(222,84%,5%)]',
+                  'text-left py-3.5 px-6 text-xs font-semibold text-[hsl(220,9%,46%)] uppercase tracking-wider',
+                  column.sortable && 'cursor-pointer hover:text-[hsl(222,84%,5%)] transition-colors',
                   column.className
                 )}
                 style={column.width ? { width: column.width } : undefined}
@@ -112,9 +112,9 @@ export function DataTable<T extends Record<string, any>>({
               <tr
                 key={index}
                 className={cn(
-                  'border-b border-[hsl(214,32%,91%)] transition-colors',
+                  'border-b border-[hsl(214,32%,91%)] last:border-0 transition-all duration-150',
                   onRowClick &&
-                    'cursor-pointer hover:bg-[hsl(240,20%,96%)]'
+                    'cursor-pointer hover:bg-[hsl(240,20%,98%)]'
                 )}
                 onClick={() => onRowClick?.(item)}
               >
@@ -122,9 +122,10 @@ export function DataTable<T extends Record<string, any>>({
                   <td
                     key={column.key}
                     className={cn(
-                      'py-3 px-4 text-sm text-[hsl(222,84%,5%)]',
+                      'py-4 px-6 text-sm text-[hsl(222,84%,5%)]',
                       column.className
                     )}
+                    style={column.width ? { width: column.width } : undefined}
                   >
                     {column.render ? column.render(item) : item[column.key]}
                   </td>

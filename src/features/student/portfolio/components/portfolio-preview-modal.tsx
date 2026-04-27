@@ -97,7 +97,7 @@ export function PortfolioPreviewModal({ isOpen, onClose, data }: PortfolioPrevie
           {/* Content */}
           <div className="flex-1 overflow-y-auto custom-scrollbar p-8">
             {/* Portfolio Header */}
-            <div className="bg-gradient-to-br from-[hsl(238,74%,59%)] to-[hsl(271,81%,56%)] rounded-2xl p-8 mb-8 text-white">
+            <div className="bg-gradient-to-br from-[hsl(238,74%,59%)] to-[hsl(271,81%,56%)] rounded-2xl p-8 mb-8 text-white shadow-lg">
               <div className="flex items-start justify-between">
                 <div className="flex items-center gap-6">
                   <Avatar
@@ -157,23 +157,23 @@ export function PortfolioPreviewModal({ isOpen, onClose, data }: PortfolioPrevie
                             </Badge>
                           </div>
 
-                          <div className="bg-white rounded-lg border border-[hsl(214,32%,91%)] overflow-hidden">
-                            <table className="w-full">
+                          <div className="bg-white rounded-lg border border-[hsl(214,32%,91%)] shadow-sm overflow-hidden">
+                            <table className="w-full table-fixed">
                               <thead>
-                                <tr className="bg-[hsl(240,20%,96%)] border-b border-[hsl(214,32%,91%)]">
-                                  <th className="text-left px-4 py-3 text-xs font-medium text-[hsl(220,9%,46%)] uppercase tracking-wider">
+                                <tr className="bg-[hsl(240,20%,98%)] border-b border-[hsl(214,32%,91%)]">
+                                  <th className="text-left px-6 py-3.5 text-xs font-semibold text-[hsl(220,9%,46%)] uppercase tracking-wider w-[15%]">
                                     Code
                                   </th>
-                                  <th className="text-left px-4 py-3 text-xs font-medium text-[hsl(220,9%,46%)] uppercase tracking-wider">
+                                  <th className="text-left px-6 py-3.5 text-xs font-semibold text-[hsl(220,9%,46%)] uppercase tracking-wider w-[40%]">
                                     Subject
                                   </th>
-                                  <th className="text-left px-4 py-3 text-xs font-medium text-[hsl(220,9%,46%)] uppercase tracking-wider">
+                                  <th className="text-left px-6 py-3.5 text-xs font-semibold text-[hsl(220,9%,46%)] uppercase tracking-wider w-[15%]">
                                     Type
                                   </th>
-                                  <th className="text-center px-4 py-3 text-xs font-medium text-[hsl(220,9%,46%)] uppercase tracking-wider">
+                                  <th className="text-center px-6 py-3.5 text-xs font-semibold text-[hsl(220,9%,46%)] uppercase tracking-wider w-[15%]">
                                     Credits
                                   </th>
-                                  <th className="text-center px-4 py-3 text-xs font-medium text-[hsl(220,9%,46%)] uppercase tracking-wider">
+                                  <th className="text-center px-6 py-3.5 text-xs font-semibold text-[hsl(220,9%,46%)] uppercase tracking-wider w-[15%]">
                                     Grade
                                   </th>
                                 </tr>
@@ -182,23 +182,23 @@ export function PortfolioPreviewModal({ isOpen, onClose, data }: PortfolioPrevie
                                 {semesterData.subjects.map((subject, index) => (
                                   <tr
                                     key={index}
-                                    className="border-b border-[hsl(214,32%,91%)] last:border-0"
+                                    className="border-b border-[hsl(214,32%,91%)] last:border-0 hover:bg-[hsl(240,20%,98%)] transition-all duration-150"
                                   >
-                                    <td className="px-4 py-3 text-sm font-medium text-[hsl(220,9%,46%)]">
+                                    <td className="px-6 py-4 text-sm font-medium text-[hsl(220,9%,46%)]">
                                       {subject.code}
                                     </td>
-                                    <td className="px-4 py-3 text-sm text-[hsl(222,84%,5%)]">
+                                    <td className="px-6 py-4 text-sm text-[hsl(222,84%,5%)] font-medium">
                                       {subject.name}
                                     </td>
-                                    <td className="px-4 py-3">
+                                    <td className="px-6 py-4">
                                       <Badge variant="student" size="sm">
                                         {subject.type}
                                       </Badge>
                                     </td>
-                                    <td className="px-4 py-3 text-sm text-center text-[hsl(222,84%,5%)]">
+                                    <td className="px-6 py-4 text-sm text-center text-[hsl(222,84%,5%)] font-medium">
                                       {subject.credits}
                                     </td>
-                                    <td className="px-4 py-3 text-center">
+                                    <td className="px-6 py-4 text-center">
                                       <span
                                         className="inline-block px-3 py-1 rounded-lg text-sm font-bold"
                                         style={{

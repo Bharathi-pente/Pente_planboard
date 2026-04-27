@@ -1,6 +1,6 @@
 import { KPICard } from '@/components/shared'
 import { useSupervisorDashboardData } from '../hooks/use-supervisor-dashboard'
-import { FileCheck, AlertTriangle, CheckCircle, Users, TrendingUp } from 'lucide-react'
+import { FileCheck, AlertTriangle, Users, TrendingUp } from 'lucide-react'
 import { RecentPortfolioReviews } from './recent-portfolio-reviews'
 import { DepartmentOverview } from './department-overview'
 import { SupervisorDashboardHeader } from './supervisor-dashboard-header'
@@ -26,8 +26,8 @@ export function SupervisorDashboard() {
       {/* Header */}
       <SupervisorDashboardHeader />
 
-      {/* Top Stats Cards (5 Cards in 1 Row) */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 mb-6">
+      {/* Top Stats Cards (4 Cards in 1 Row) */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
         <KPICard
           title="Total Students"
           value={stats.totalStudents.toString()}
@@ -63,14 +63,6 @@ export function SupervisorDashboard() {
         />
 
         <KPICard
-          title="Graduation Clearance"
-          value={stats.graduationClearance.toString()}
-          subtitle="Ready for final review"
-          icon={<CheckCircle className="w-6 h-6" />}
-          variant="faculty"
-        />
-
-        <KPICard
           title="Completion Rate"
           value={`${stats.completionRate}%`}
           subtitle="+5% improvement"
@@ -85,14 +77,14 @@ export function SupervisorDashboard() {
       </div>
 
       {/* Main Content: 2 Column Layout */}
-      <div className="grid grid-cols-1 lg:grid-cols-[70%_30%] gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-[68%_30%] gap-6">
         {/* Left Column - Recent Portfolio Reviews */}
-        <div className="space-y-6">
+        <div className="flex flex-col gap-3">
           <RecentPortfolioReviews reviews={recentReviews} />
         </div>
 
         {/* Right Column - Department Overview */}
-        <div className="space-y-6">
+        <div className="flex flex-col gap-3">
           <DepartmentOverview departments={departments} />
         </div>
       </div>

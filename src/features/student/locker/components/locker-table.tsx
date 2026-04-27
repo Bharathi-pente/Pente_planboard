@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { MoreVertical, Eye, Download, ExternalLink } from 'lucide-react'
 import { Badge } from '@/components/ui'
-import { DataTable, type Column } from '@/components/shared'
+import { DataTable, type Column, Pagination } from '@/components/shared'
 import { formatDate } from '@/utils'
 
 interface LockerItem {
@@ -11,7 +11,7 @@ interface LockerItem {
   category: string
   verifiedDate: string
   status: string
-  issuedBy?: string
+  issuer?: string
 }
 
 interface LockerTableProps {
@@ -19,9 +19,12 @@ interface LockerTableProps {
   onView: (item: LockerItem) => void
   onDownload: (item: LockerItem) => void
   onShare: (item: LockerItem) => void
+  currentPage?: number
+  totalPages?: number
+  onPageChange?: (page: number) => void
 }
 
-export function LockerTable({ data, onView, onDownload, onShare }: LockerTableProps) {
+export function LockerTable({ data, onView, onDownload, onShare, currentPage = 1, totalPages = 1, onPageChange }: LockerTableProps) {
   const [openDropdownId, setOpenDropdownId] = React.useState<number | null>(null)
 
   const ActionMenu = ({ item }: { item: LockerItem }) => {
@@ -107,12 +110,13 @@ export function LockerTable({ data, onView, onDownload, onShare }: LockerTablePr
       render: (item) => (
         <div className="flex items-center gap-3">
           <span className="text-2xl flex-shrink-0">{getTypeIcon(item.type)}</span>
-          <div>
-            <p className="font-medium text-[hsl(222,84%,5%)]">{item.name}</p>
+          <div className="min-w-0">
+            <p className="font-medium text-[hsl(222,84%,5%)] truncate">{item.name}</p>
             <p className="text-xs text-[hsl(220,9%,46%)] mt-0.5">{item.type}</p>
           </div>
         </div>
       ),
+      width: '30%',
     },
     {
       key: 'category',
@@ -123,24 +127,24 @@ export function LockerTable({ data, onView, onDownload, onShare }: LockerTablePr
           {item.category}
         </Badge>
       ),
-      width: '150px',
+      width: '20%',
     },
     {
       key: 'verifiedDate',
       header: 'Verified Date',
       sortable: true,
-      render: (item) => <span className="text-sm">{formatDate(item.verifiedDate)}</span>,
-      width: '150px',
+      render: (item) => <span className="text-sm text-[hsl(222,84%,5%)]">{formatDate(item.verifiedDate)}</span>,
+      width: '15%',
     },
     {
       key: 'issuedBy',
       header: 'Issued By',
       render: (item) => (
-        <span className="text-sm text-[hsl(220,9%,46%)]">
-          {item.issuedBy || '—'}
+        <span className="text-sm text-[hsl(220,9%,46%)] truncate block">
+          {item.issuer || '—'}
         </span>
       ),
-      width: '180px',
+      width: '15%',
     },
     {
       key: 'status',
@@ -151,24 +155,31 @@ export function LockerTable({ data, onView, onDownload, onShare }: LockerTablePr
           {item.status}
         </Badge>
       ),
-      width: '100px',
+      width: '10%',
     },
     {
       key: 'actions',
-      header: '',
+      header: 'Actions',
       render: (item) => <ActionMenu item={item} />,
-      width: '60px',
+      width: '10%',
     },
   ]
 
   return (
-    <div className="bg-white rounded-xl border border-[hsl(214,32%,91%)]">
+    <div className="bg-white rounded-xl border border-[hsl(214,32%,91%)] shadow-sm hover:shadow-md transition-all duration-200 overflow-hidden">
       <DataTable
         data={data}
         columns={columns}
         onRowClick={(item) => onView(item)}
         emptyMessage="No verified items in your locker yet"
       />
+      {totalPages > 1 && onPageChange && (
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={onPageChange}
+        />
+      )}
     </div>
   )
 }

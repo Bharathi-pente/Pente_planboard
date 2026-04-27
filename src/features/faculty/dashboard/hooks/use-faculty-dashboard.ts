@@ -21,6 +21,11 @@ export function useFacultyDashboard() {
     queryFn: () => facultyDashboardService.getClassPerformance(),
   })
 
+  const classPerformanceChartDataQuery = useQuery({
+    queryKey: ['faculty', 'dashboard', 'class-performance-chart-data'],
+    queryFn: () => facultyDashboardService.getClassPerformanceChartData(),
+  })
+
   const upcomingDeadlinesQuery = useQuery({
     queryKey: ['faculty', 'dashboard', 'upcoming-deadlines'],
     queryFn: () => facultyDashboardService.getUpcomingDeadlines(),
@@ -35,12 +40,14 @@ export function useFacultyDashboard() {
     stats: statsQuery.data,
     recentActivities: recentActivitiesQuery.data || [],
     classPerformance: classPerformanceQuery.data || [],
+    classPerformanceChartData: classPerformanceChartDataQuery.data,
     upcomingDeadlines: upcomingDeadlinesQuery.data || [],
     weeklySchedule: weeklyScheduleQuery.data,
     isLoading:
       statsQuery.isLoading ||
       recentActivitiesQuery.isLoading ||
       classPerformanceQuery.isLoading ||
+      classPerformanceChartDataQuery.isLoading ||
       upcomingDeadlinesQuery.isLoading ||
       weeklyScheduleQuery.isLoading,
   }

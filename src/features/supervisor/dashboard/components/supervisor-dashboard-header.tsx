@@ -1,3 +1,5 @@
+import { FileDown } from 'lucide-react'
+
 export function SupervisorDashboardHeader() {
   return (
     <div className="mb-8">
@@ -11,8 +13,9 @@ export function SupervisorDashboardHeader() {
           </p>
         </div>
         <div className="flex items-center gap-3">
-          <button className="h-9 px-4 text-xs font-semibold rounded-xl bg-gradient-to-b from-[hsl(0,72%,51%)] to-[hsl(0,72%,46%)] text-white shadow-sm hover:from-[hsl(0,72%,46%)] hover:to-[hsl(0,72%,41%)] transition-all duration-200">
-            📥 Generate Report
+          <button className="h-9 px-4 text-xs font-semibold rounded-xl bg-gradient-to-b from-[hsl(0,72%,51%)] to-[hsl(0,72%,46%)] text-white shadow-sm hover:from-[hsl(0,72%,46%)] hover:to-[hsl(0,72%,41%)] transition-all duration-200 flex items-center gap-2">
+            <FileDown className="w-4 h-4" />
+            Generate Report
           </button>
         </div>
       </div>
